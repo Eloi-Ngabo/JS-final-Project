@@ -323,9 +323,9 @@ input {
    display: none !important;
 }
 
-/* .movies__loading--spinner .movies__loading {
-   display: block;
-}  */
+.movies__loading--spinner .movies__loading {
+   display: block !important;
+} 
 
 .fa-spinner {
    animation: rotate 600ms infinite linear;

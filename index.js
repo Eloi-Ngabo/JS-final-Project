@@ -13,7 +13,7 @@ let movies;
  async function renderMovies(filter) {
  const moviesWrapper = document.querySelector(".movies");
 
-  moviesWrapper.classList.add(' movies__loading')
+  moviesWrapper.classList.add('movies__loading')
 
   if(!movies) {
     movies = await getMovies()
@@ -21,10 +21,10 @@ let movies;
     
   moviesWrapper.classList.remove ('movies__loading')
   
-  if (filter === 'NEWEST_TO_OLDEST') {
+  if (filter === 'Newest_TO_Oldest') {
     movies.sort((a, b) => (a.Year || a.Year) - (b.Year || b.Year));
   }
-  else if (filter === 'OLDEST_TO_NEWEST') {
+  else if (filter === 'Oldest_TO_Newest') {
     movies.sort((a, b) => (b.Year || b.Year) - (a.Year || a.Year));
   }
   else if (filter === 'Rating') {
@@ -41,7 +41,7 @@ let movies;
   ${movie.Title}
   </div>
   <div class="movie__ratings">
-   ${ratingsHTML(movie.rating)}
+   ${ratingsHTML(4.5)}
   </div>
   <div class="movie__Year">
    ${movie.Year}
