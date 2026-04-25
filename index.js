@@ -13,7 +13,7 @@ let movies;
  async function renderMovies(filter) {
  const moviesWrapper = document.querySelector(".movies");
 
-  moviesWrapper.classList += ' movies__loading'
+  moviesWrapper.classList.add(' movies__loading')
 
   if(!movies) {
     movies = await getMovies()
@@ -22,10 +22,10 @@ let movies;
   moviesWrapper.classList.remove ('movies__loading')
   
   if (filter === 'NEWEST_TO_OLDEST') {
-    movies.sort((a, b) => (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice));
+    movies.sort((a, b) => (a.Year || a.Year) - (b.Year || b.Year));
   }
   else if (filter === 'OLDEST_TO_NEWEST') {
-    movies.sort((a, b) => (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice));
+    movies.sort((a, b) => (b.Year || b.Year) - (a.Year || a.Year));
   }
   else if (filter === 'Rating') {
     movies.sort((a, b) => b.rating - a.rating);
@@ -35,16 +35,16 @@ let movies;
 
    return `<div class="movie">
   <figure class="movie__img--wrapper">
-    <img class="movie__img" src="${movie.url}" alt=""> 
+    <img class="movie__img" src="${movie.Poster}" alt=""> 
   </figure>
   <div class="movie__title">
-  ${movie.title}
+  ${movie.Title}
   </div>
   <div class="movie__ratings">
    ${ratingsHTML(movie.rating)}
   </div>
-  <div class="movie__price">
-   ${priceHTML(movie.originalPrice, movie.salePrice)}
+  <div class="movie__Year">
+   ${movie.Year}
   </div>
   </div>`
   })
@@ -77,7 +77,7 @@ function ratingsHTML(rating) {
   return ratingHTML;
 }
 
-function filterMoveis(event) {
+function filterMovies(event) {
     renderMovies(event.target.value);
 }
 
