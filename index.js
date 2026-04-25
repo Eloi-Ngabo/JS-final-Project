@@ -54,15 +54,36 @@ let movies;
 
 }
 
-function priceHTML(originalPrice, salePrice) {
-  if (!salePrice) {
-    return `$${originalPrice.toFixed(2)}`
-  }
-  else {
-    return `<span class="movie__price--normal">$${originalPrice.toFixed(2)}</span>$${salePrice.toFixed(2)}`
-  }
+// function priceHTML(originalPrice, salePrice) {
+//   if (!salePrice) {
+//     return `$${originalPrice.toFixed(2)}`
+//   }
+//   else {
+//     return `<span class="movie__price--normal">$${originalPrice.toFixed(2)}</span>$${salePrice.toFixed(2)}`
+//   }
   
+// }
+
+async function searchMovies() {
+  const input = document.querySelector('input').value;
+
+  const wrapper = document.querySelector('.movies');
+  wrapper.classList.add('movies__loading');
+
+  const res = await fetch(`https://www.omdbapi.com/?apikey=ba5cd1ce&s=fast=${input}`);
+  const data = await res.json();
+
+  wrapper.classList.remove('movies__loading');
+
+  wrapper.innerHTML = data.Search.map(m => `
+    <div class="movie">
+      <img src="${m.Poster}" />
+      <p>${m.Title}</p>
+      <p>${m.Year}</p>
+    </div>
+  `).join('');
 }
+
 
 
 
