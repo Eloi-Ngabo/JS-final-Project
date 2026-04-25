@@ -1,56 +1,56 @@
-function openMenu() {
+function openMenu(addEventListener) {
   document.body.classList += " menu--open"  
 }
 
-function closeMenu() {
+function closeMenu(addEventListener) {
   document.body.classList.remove("menu--open") 
 }
 
 
 
-let books;
+let movies;
 
- async function renderBooks(filter) {
- const booksWrapper = document.querySelector(".books");
+ async function renderMovies(filter) {
+ const moviesWrapper = document.querySelector(".movies");
 
-  booksWrapper.classList += ' books__loading'
+  moviesWrapper.classList += ' movies__loading'
 
-  if(!books) {
-    books = await getBooks()
+  if(!movies) {
+    movies = await getMovies()
   }
     
-  booksWrapper.classList.remove ('books__loading')
+  moviesWrapper.classList.remove ('movies__loading')
   
-  if (filter === 'LOW_TO_HIGH') {
-    books.sort((a, b) => (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice));
+  if (filter === 'NEWEST_TO_OLDEST') {
+    movies.sort((a, b) => (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice));
   }
-  else if (filter === 'HIGH_TO_LOW') {
-    books.sort((a, b) => (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice));
+  else if (filter === 'OLDEST_TO_NEWEST') {
+    movies.sort((a, b) => (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice));
   }
   else if (filter === 'Rating') {
-    books.sort((a, b) => b.rating - a.rating);
+    movies.sort((a, b) => b.rating - a.rating);
   }
 
-  const boonksHtml = books.map((book) => {
+  const moviesHtml = movies.map((movie) => {
 
-   return `<div class="book">
-  <figure class="book__img--wrapper">
-    <img class="book__img" src="${book.url}" alt=""> 
+   return `<div class="movie">
+  <figure class="movie__img--wrapper">
+    <img class="movie__img" src="${movie.url}" alt=""> 
   </figure>
-  <div class="book__title">
-  ${book.title}
+  <div class="movie__title">
+  ${movie.title}
   </div>
-  <div class="book__ratings">
-   ${ratingsHTML(book.rating)}
+  <div class="movie__ratings">
+   ${ratingsHTML(movie.rating)}
   </div>
-  <div class="book__price">
-   ${priceHTML(book.originalPrice, book.salePrice)}
+  <div class="movie__price">
+   ${priceHTML(movie.originalPrice, movie.salePrice)}
   </div>
   </div>`
   })
   .join("")
 
-  booksWrapper.innerHTML = boonksHtml;
+  moviesWrapper.innerHTML = moviesHtml;
 
 }
 
@@ -59,7 +59,7 @@ function priceHTML(originalPrice, salePrice) {
     return `$${originalPrice.toFixed(2)}`
   }
   else {
-    return `<span class="book__price--normal">$${originalPrice.toFixed(2)}</span>$${salePrice.toFixed(2)}`
+    return `<span class="movie__price--normal">$${originalPrice.toFixed(2)}</span>$${salePrice.toFixed(2)}`
   }
   
 }
@@ -77,16 +77,16 @@ function ratingsHTML(rating) {
   return ratingHTML;
 }
 
-function filterBooks(event) {
-    renderBooks(event.target.value);
+function filterMoveis(event) {
+    renderMovies(event.target.value);
 }
 
 setTimeout(() => {
-  renderBooks();
+  renderMovies();
 });
 
 // // // // SEARCH Movies
-function getBooks() {
+function getMovies() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve([

@@ -6,7 +6,7 @@
     <title>Movies</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/270cddbedf.js" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
  </head>
 
  <body>
@@ -19,7 +19,7 @@
         <li><a href="#" class="nav__link">Find your movie</a></li>
         <li><a href="#" class="nav__link nav__link--primary">Contact</a></li>
      </ul>
-    <button class="btn__menu" onclick="openMenu()">
+    <button class="btn__menu" onclick="openMenu(addEventListener)">
         <i class="fa-solid fa-bars"></i>
     </button>
     <div class="menu__backdrop">
@@ -27,11 +27,11 @@
             <i class="fas fa-times"></i>
         </button>
             <ul class="menu__links">
-                <li class="menu__link">
+                <li class="menu__item">
                     <a href="#" class="menu__link" onclick="closeMenu()">Home</a></li>
-                <li class="menu__link">
+                <li class="menu__item">
                     <a href="#features" class="menu__link" onclick="closeMenu()">Contact</a></li>
-                <li class="menu__link">
+                <li class="menu__item">
                     <a href="#" class="menu__link no-cursor" onclick="closeMenu()">Movies</a></li>
             </ul>
      </div>
@@ -40,49 +40,47 @@
     <header>
     <div class="header__container">
         <div class="header__description">
-            <h1>American's most awarded movies subscription platform</h1>
+            <h1>America's most awarded movie subscription platform</h1>
             <h2>Find your Favorite Movies with <span class="purple">BLINKER</span></h2>
-            <a href="#features">
-                <button class="btn">All movies here</button>
-            </a>
+            <a href="#features" class="btn">All movies here</a>
 
         <div class="input"> 
-        <input data-v-2a11e7ca="" type="text" placeholder="Search by Model, Make or Keyword">
-    
+        <input type="text" placeholder="Search by Model, Make or Keyword">
+            <button class="movies__search btn__search" onclick="searchMovies()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fas fa-spinner movies__loading--spinner"></i>
+            </button>
        </div>
-        </div> 
+        </div>
         <figure class="header__img--wrapper">
-            <img src="./assets/loopit.png" alt="">
+            <img src="./assets/undraw_virtual.svg" alt="Movie browsing illustration">
         </figure> 
     </div>
     </header>
    </section>
-
    <main>
     <section id="features">
         <div class="container">
             <div class="row">
-                <div class="books__header"> 
+                <div class="movies__header"> 
                 <h2 class="section__title">
-                    All<span class="purple"> Movies</span>
+                    All <span class="purple"> Movies</span>
                 </h2>
-                <select id="fitler" onchange="filterBooks(event)"> 
+                <select id="filter" onchange="filterMovies(event)"> 
                     <option value="" disabled selected>sort</option>
-                    <option value="A_TO_Z" >Price, A to Z</option>
-                    <option value="Z_TO_A" >Price, Z to A</option>
+                    <option value="Newest_TO_Oldest" > Newest to Oldest</option>
+                    <option value="Oldest_TO_Newest" > Oldest to Newest</option>
                     <option value="Rating" >Rating</option>
+                    <option value="Year" >Year</option>
                 </select>
                 </div>
-
-                <div class="books"></div>
-
-                <div class="books">
-                    <i class="fas fa-spinner books__loading--spinner"></i>
-                    <div class="book">
-                        <figure class="book__img--wrapper">
-                            <img class="book__img" src="./assets/movie 1.jpg" alt=""> 
+                <div class="movies">
+                    <i class="fas fa-spinner movies__loading--spinner"></i>
+                    <div class="movie">
+                        <figure class="movie__img--wrapper">
+                            <img class="movie__img" src="./assets/movie 1.jpg" alt=""> 
                         </figure>
-                        <div class="book__title">
+                        <div class="movie__title">
                         The Fast and the Furious
                         </div>
                         <div class="movie__ratings">
@@ -92,142 +90,163 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-alt"></i>
                         </div>
-                        <div class="book__price">
-                         <span class="book__price--normal">$59.95</span> $14.95 
+                        <!-- <div class="movie__price">
+                         <span class="movie__price--normal">$59.95</span> $14.95 
+                        </div> -->
+                          <div class="movie__year">
+                         <span class="movie__year--normal">year</span> 2001 
                         </div>
                     </div>
-
-                    <div class="book">
-                        <figure class="book__img--wrapper">
-                            <img class="book__img" src="./assets/movie 2.jpg" alt=""> 
+                    <div class="movie">
+                        <figure class="movie__img--wrapper">
+                            <img class="movie__img" src="./assets/movie 2.jpg" alt=""> 
                         </figure>
-                        <div class="book__title">
+                        <div class="movie__title">
                         Fast & Furious 6
                         </div>
-                        <div class="book__ratings">
+                        <div class="movie__ratings">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-alt"></i>
                         </div>
-                        <div class="book__price">
-                         <span class="book__price--normal">$59.95</span> $14.95 
+                        <!-- <div class="movie__price">
+                         <span class="movie__price--normal">$59.95</span> $14.95 
+                        </div> -->
+                         <div class="movie__year">
+                         <span class="movie__year--normal"> year</span> 2013 
                         </div>
                     </div>
-                    <div class="book">
-                        <figure class="book__img--wrapper">
-                            <img class="book__img" src="./assets/movie 3.jpg" alt=""> 
+                    <div class="movie">
+                        <figure class="movie__img--wrapper">
+                            <img class="movie__img" src="./assets/movie 3.jpg" alt=""> 
                         </figure>
-                        <div class="book__title">
+                        <div class="movie__title">
                         Fast Five
                         </div>
-                        <div class="book__ratings">
+                        <div class="movie__ratings">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-alt"></i>
                         </div>
-                        <div class="book__price">
-                         <span class="book__price--normal">$59.95</span> $14.95 
+                        <!-- <div class="movie__price">
+                         <span class="movie__price--normal">$59.95</span> $14.95 
+                        </div> -->
+                         <div class="movie__year">
+                         <span class="movie__year--normal">year</span> 2011 
                         </div>
                     </div>
-                    <div class="book">
-                        <figure class="book__img--wrapper">
-                            <img class="book__img" src="./assets/movie 4.jpg" alt=""> 
+                    <div class="movie">
+                        <figure class="movie__img--wrapper">
+                            <img class="movie__img" src="./assets/movie 4.jpg" alt=""> 
                         </figure>
-                        <div class="book__title">
+                        <div class="movie__title">
                            Fast & Furious
                         </div>
-                        <div class="book__ratings">
+                        <div class="movie__ratings">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-alt"></i>
                         </div>
-                        <div class="book__price">
-                         <span class="book__price--normal">$59.95</span> $14.95 
+                        <!-- <div class="movie__price">
+                         <span class="movie__price--normal">$59.95</span> $14.95 
+                        </div> -->
+                         <div class="movie__year">
+                         <span class="movie__year--normal">year</span> 2009 
                         </div>
                     </div>
-                    <div class="book">
-                        <figure class="book__img--wrapper">
-                            <img class="book__img" src="./assets/movie 5.jpg" alt=""> 
+                    <div class="movie">
+                        <figure class="movie__img--wrapper">
+                            <img class="movie__img" src="./assets/movie 5.jpg" alt=""> 
                         </figure>
-                        <div class="book__title">
+                        <div class="movie__title">
                            The Fast and the Furious: Tokyo Drift
                         </div>
-                        <div class="book__ratings">
+                        <div class="movie__ratings">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-alt"></i>
                         </div>
-                        <div class="book__price">
-                         <span class="book__price--normal">$59.95</span> $14.95 
+                        <!-- <div class="movie__price">
+                         <span class="movie__price--normal">$59.95</span> $14.95 
+                        </div> -->
+                         <div class="movie__year">
+                         <span class="movie__year--normal">year</span> 2006 
                         </div>
                     </div>
-
-                    <div class="book">
-                        <figure class="book__img--wrapper">
-                            <img class="book__img" src="./assets/movie 6.jpg" alt=""> 
+                    <div class="movie">
+                        <figure class="movie__img--wrapper">
+                            <img class="movie__img" src="./assets/movie 6.jpg" alt=""> 
                         </figure>
-                        <div class="book__title">
+                        <div class="movie__title">
                            2 Fast 2 Furious
                         </div>
-                        <div class="book__ratings">
+                        <div class="movie__ratings">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-alt"></i>
                         </div>
-                        <div class="book__price">
-                         <span class="book__price--normal">$59.95</span> $14.95 
+                        <!-- <div class="movie__price">
+                         <span class="movie__price--normal">$59.95</span> $14.95 
+                        </div> -->
+                         <div class="movie__year">
+                         <span class="movie__year--normal">year</span> 2003 
                         </div>
                     </div>
-                    <div class="book">
-                        <figure class="book__img--wrapper">
-                            <img class="book__img" src="./assets/movie 7.jpg" alt=""> 
+                    <div class="movie">
+                        <figure class="movie__img--wrapper">
+                            <img class="movie__img" src="./assets/movie 7.jpg" alt=""> 
                         </figure>
-                        <div class="book__title">
+                        <div class="movie__title">
                         Fast & Furious Presents: Hobbs & Shaw
                         </div>
-                        <div class="book__ratings">
+                        <div class="movie__ratings">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-alt"></i>
                         </div>
-                        <div class="book__price">
-                         <span class="book__price--normal">$59.95</span> $14.95 
+                        <!-- <div class="movie__price">
+                         <span class="movie__price--normal">$59.95</span> $14.95 
+                        </div> -->
+                         <div class="movie__year">
+                         <span class="movie__year--normal">year</span> 2019 
                         </div>
                     </div>
-                    <div class="book">
-                        <figure class="book__img--wrapper">
-                            <img class="book__img" src="./assets/movie 8.jpg" alt=""> 
+                    <div class="movie">
+                        <figure class="movie__img--wrapper">
+                            <img class="movie__img" src="./assets/movie 8.jpg" alt=""> 
                         </figure>
-                        <div class="book__title">
+                        <div class="movie__title">
                            F9: The Fast Saga
                         </div>
-                        <div class="book__ratings">
+                        <div class="movie__ratings">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-alt"></i>
                         </div>
-                        <div class="book__price">
-                         <span class="book__price--normal">$59.95</span> $14.95 
+                        <!-- <div class="movie__price">
+                         <span class="movie__price--normal">$59.95</span> $14.95  -->
+                          <div class="movie__year">
+                         <span class="movie__year--normal">year</span> 2021 
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
     </section>
    </main>
     <footer>
