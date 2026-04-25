@@ -70,7 +70,9 @@ async function searchMovies() {
   const wrapper = document.querySelector('.movies');
   wrapper.classList.add('movies__loading');
 
-  const res = await fetch(`https://www.omdbapi.com/?apikey=ba5cd1ce&s=fast=${input}`);
+const res = await fetch(`https://www.omdbapi.com/?apikey=ba5cd1ce&s=${input}`);  
+
+  // const res = await fetch(`https://www.omdbapi.com/?apikey=ba5cd1ce&s=fast=${input}`);
   const data = await res.json();
 
   wrapper.classList.remove('movies__loading');
