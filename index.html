@@ -34,6 +34,7 @@
                 <li class="menu__item">
                     <a href="#" class="menu__link no-cursor" onclick="closeMenu()">Movies</a></li>
             </ul>
+            
      </div>
     </div>
     </nav>
@@ -44,10 +45,10 @@
             <h2>Find your Favorite Movies with <span class="purple">BLINKER</span></h2>
             <a href="#features" class="btn">All movies here</a>
 
-        <div class="input"> 
-        <input type="text" placeholder="Search by Model, Make or Keyword">
+        <div class="input search-container"> 
+        <input type="text" class="search-input" placeholder="Search by Model, Make or Keyword"></input>
             <button class="movies__search btn__search" onclick="searchMovies()">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 <i class="fas fa-spinner movies__loading--spinner"></i>
             </button>
        </div>

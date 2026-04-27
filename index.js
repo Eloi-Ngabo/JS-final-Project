@@ -22,13 +22,13 @@ let movies;
   moviesWrapper.classList.remove ('movies__loading')
   
   if (filter === 'Newest_TO_Oldest') {
-    movies.sort((a, b) => (a.Year || a.Year) - (b.Year || b.Year));
+    movies.sort((a, b) => (a.Year - b.Year));
   }
   else if (filter === 'Oldest_TO_Newest') {
-    movies.sort((a, b) => (b.Year || b.Year) - (a.Year || a.Year));
+    movies.sort((a, b) => (b.Year - a.Year));
   }
   else if (filter === 'Rating') {
-    movies.sort((a, b) => b.rating - a.rating);
+    movies.sort((a, b) => a.rating - b.rating);
   }
 
   const moviesHtml = movies.map((movie) => {
@@ -54,28 +54,29 @@ let movies;
 
 }
 
-// function priceHTML(originalPrice, salePrice) {
-//   if (!salePrice) {
-//     return `$${originalPrice.toFixed(2)}`
-//   }
-//   else {
-//     return `<span class="movie__price--normal">$${originalPrice.toFixed(2)}</span>$${salePrice.toFixed(2)}`
-//   }
-  
-// }
-
 async function searchMovies() {
   const input = document.querySelector('input').value;
 
-  const wrapper = document.querySelector('.movies');
-  wrapper.classList.add('movies__loading');
+
+ const wrapper = document.querySelector('.movies');
+ const btn = document.querySelector('.movies__search');
+ const icon = btn.querySelector('.fa-magnifying-glass');
+ const spinner = btn.querySelector('.fa-spinner');
+
+ icon.style.display = 'none';
+ spinner.style.display = 'inline-block';
+ wrapper.classList.add('movies__loading');
+
 
 const res = await fetch(`https://www.omdbapi.com/?apikey=ba5cd1ce&s=${input}`);  
 
   // const res = await fetch(`https://www.omdbapi.com/?apikey=ba5cd1ce&s=fast=${input}`);
   const data = await res.json();
 
-  wrapper.classList.remove('movies__loading');
+  spinner.style.display = 'none';
+ icon.style.display = 'inline-block';
+ wrapper.classList.remove('movies__loading');
+
 
   wrapper.innerHTML = data.Search.map(m => `
     <div class="movie">
@@ -85,8 +86,6 @@ const res = await fetch(`https://www.omdbapi.com/?apikey=ba5cd1ce&s=${input}`);
     </div>
   `).join('');
 }
-
-
 
 
 function ratingsHTML(rating) {
