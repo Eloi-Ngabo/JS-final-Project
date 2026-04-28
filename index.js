@@ -1,8 +1,8 @@
-function openMenu(addEventListener) {
+function openMenu() {
   document.body.classList += " menu--open"  
 }
 
-function closeMenu(addEventListener) {
+function closeMenu() {
   document.body.classList.remove("menu--open") 
 }
 

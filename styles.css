@@ -344,6 +344,7 @@ button.btn__search:hover {
 
 .fa-spinner {
    animation: rotate 600ms infinite linear;
+   display: none;
 }
 
 @keyframes rotate {
