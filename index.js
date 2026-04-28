@@ -78,13 +78,20 @@ const res = await fetch(`https://www.omdbapi.com/?apikey=ba5cd1ce&s=${input}`);
  wrapper.classList.remove('movies__loading');
 
 
-  wrapper.innerHTML = data.Search.map(m => `
-    <div class="movie">
-      <img src="${m.Poster}" />
-      <p>${m.Title}</p>
-      <p>${m.Year}</p>
-    </div>
-  `).join('');
+ if (!data.Search) {
+  wrapper.innerHTML = `<p>No movies found.</p>`;
+  return;
+}
+
+wrapper.innerHTML = data.Search.map(m => `
+  <div class="movie">
+    <figure class="movie__img--wrapper">
+      <img class="movie__img" src="${m.Poster}" alt="${m.Title}" />
+    </figure>
+    <div class="movie__title">${m.Title}</div>
+    <div class="movie__Year">${m.Year}</div>
+  </div>
+`).join('');
 }
 
 

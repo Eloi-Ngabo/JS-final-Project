@@ -341,7 +341,7 @@ button.btn__search:hover {
     background-color: rgb(240, 248, 255)
 }
 
-.movies__loading {
+/* .movies__loading {
    display: flex;
    align-items: center;
    justify-content: center;
@@ -355,9 +355,14 @@ button.btn__search:hover {
   
 }
 
-.movies__loading .movies__loading--spinner {
+.movies__loading,.movies__loading--spinner {
   display: block !important;
-}
+} */
+
+
+
+
+
 
 .fa-spinner {
    animation: rotate 600ms infinite linear;
@@ -374,10 +379,14 @@ button.btn__search:hover {
 }
 
 .movies {
-    display: flex;
-    flex-wrap: wrap;
+   display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  min-height: 300px;
     
 }
+
+
 
 .movie {
       width: 25%;
