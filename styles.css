@@ -341,23 +341,6 @@ button.btn__search:hover {
     background-color: rgb(240, 248, 255)
 }
 
-.movies__loading {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding-top: 60px;
-   font-size: 60px;
-   color: #7342d6;
-}
-
-.movies__loading--spinner {
-   display: none;
-}
-
-.movies__loading .movies__loading--spinner {
-  display: block !important;
-}
-
 
 .fa-spinner {
    animation: rotate 600ms infinite linear;
@@ -377,11 +360,12 @@ button.btn__search:hover {
    display: flex;
   flex-wrap: wrap;
   position: relative;
-  min-height: 400px;
-    
+  min-height: 300px;  
 }
 
-.movies > .movies__loading--spinner {
+
+
+.movies.movies__loading--spinner {
   display: none;
   font-size: 60px;
   color: #7342d6;
@@ -390,15 +374,6 @@ button.btn__search:hover {
   left: 50%;
   transform: translateX(-50%);
 }
-
-.movies.movies__loading {
-  justify-content: center;
-}
-
-.movies.movies__loading > .movies__loading--spinner {
-  display: block;
-}
-
 
 .movie {
       width: 25%;
